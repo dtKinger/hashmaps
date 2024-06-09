@@ -17,24 +17,88 @@ class HashMap {
     return hashCode;
   } 
 
+  get(key) {
+    let value = null;
+    if (this.theArray){
+      this.theArray.forEach((bucket) => {
+        const headNode = bucket.head;
+        // Traverse time
+        let temp = headNode;
+        while (temp){ // like my print function - want to check the last value in list as well.
+          // Check the key
+          if (temp.key == key){
+            value = temp.value
+            return value; // a lot like itHas() but dif return value.
+          }
+            temp = temp.nextNode
+          }
+        })
+      return value; // small dif here too
+    }
+  }
+
+  itHas (key) {
+    let keyFound = false;
+    if (this.theArray){
+      this.theArray.forEach((bucket) => {
+        const headNode = bucket.head;
+        // Traverse time
+        let temp = headNode;
+        while (temp){ // like my print function - want to check the last value in list as well.
+          // Check the key
+          if (temp.key == key){
+            console.log('We Have a Match!')
+            keyFound = true;
+            return keyFound;
+          }
+            temp = temp.nextNode
+          }
+        })
+      return keyFound;
+    }
+  }
+
+  update (key, newValue) {
+    
+    if (this.theArray){
+      this.theArray.forEach((bucket) => {
+        const headNode = bucket.head;
+        // Traverse time
+        let temp = headNode;
+        while (temp){ // like my print function - want to check the last value in list as well.
+          // Check the key
+          if (temp.key == key){
+            temp.value = newValue;
+            console.log(`value updated to ${newValue}`)
+          }
+            temp = temp.nextNode
+          }
+        })
+      
+    }
+  }
+
   set(key, value){
     assertStringType(key);
     const hash = this.hash(key)
     if (this.theArray[hash] == undefined ){
-      console.log('it was undefined')
+      
     // Create a Linked List!
     const list = new LinkedList();
-    // Add the key-value pair as a new Node
-    list.prepend(key, value, null);
-    // store the linked list in the Array
-    this.theArray[hash] = list;
-    console.log(this.theArray)
-    // If the bucket is not empty, traverse the linked list?
+    list.prepend(key, value, null); // creates a new node
+    this.theArray[hash] = list; // store the linked list in the Array
     } else if (this.theArray[hash] != undefined){
-      console.log('it was NOT undefined')
-      
+      console.log('We have a Collision')
+    // Run the has(key) method to see if we want to overwrite an existing key's value
+    if (this.itHas(key)){
+    // Traverse again and update value?
+      this.update(key, value);
+      console.log(this.theArray[hash]);
+    } else {
+      // link a new node
     }
-    
+    }
+    // Else, append this new key value pair to the tail of linked list
   }
 }
 
