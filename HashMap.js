@@ -8,12 +8,12 @@ class HashMap {
 
   hash(key) {
     let hashCode = 0;
+        
     const primeNumber = 31;
     for (let i = 0; i < key.length; i++) {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
       hashCode = hashCode % 16;
     }
-    hashCode = hashCode % 16;
     return hashCode;
   } 
 
@@ -71,34 +71,31 @@ class HashMap {
             temp.value = newValue;
             console.log(`value updated to ${newValue}`)
           }
-            temp = temp.nextNode
-          }
-        })
-      
+          temp = temp.nextNode
+        }
+      })
     }
   }
 
   set(key, value){
     assertStringType(key);
     const hash = this.hash(key)
-    if (this.theArray[hash] == undefined ){
-      
+    console.log(hash)
+    if (this.theArray[hash] === undefined ){
     // Create a Linked List!
     const list = new LinkedList();
     list.prepend(key, value, null); // creates a new node
     this.theArray[hash] = list; // store the linked list in the Array
     } else if (this.theArray[hash] != undefined){
       console.log('We have a Collision')
-    // Run the has(key) method to see if we want to overwrite an existing key's value
-    if (this.itHas(key)){
-    // Traverse again and update value?
-      this.update(key, value);
-      console.log(this.theArray[hash]);
-    } else {
-      // link a new node
+      // Run the has(key) method to see if we want to overwrite an existing key's value
+      if (this.itHas(key)){
+        this.update(key, value);
+      console.log(this.theArray)
+      } else {
+        console.log('here')
+      }
     }
-    }
-    // Else, append this new key value pair to the tail of linked list
   }
 }
 
