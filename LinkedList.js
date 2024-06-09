@@ -4,8 +4,8 @@ class LinkedList {
     this.length = 0;
   }
 
-  prepend (value) {
-    const newNode = new Node(value, this.head);
+  prepend (key, value, next) {
+    const newNode = new Node(key, value, this.head);
     this.head = newNode;
     this.length += 1;
   }
@@ -43,10 +43,11 @@ class LinkedList {
 }
 
 class Node {
-  constructor (value, nextNode) {
-    this.value = value;
+  constructor (key, value, nextNode) {
+    this.key = key
+    this.value = value
     this.nextNode = nextNode;
   }
 }
 
-module.exports = LinkedList
+module.exports = LinkedList, Node

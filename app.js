@@ -1,7 +1,7 @@
-const LinkedList = require('./LinkedList')
 const HashMap = require('./HashMap')
 
 const map = new HashMap(16);
-const list = new LinkedList();
 
-console.log(map)
+map.set('Carlos', 'This is the old one')
+map.set('Carlos', 'This is the new one')
+// map.set('Carla', 'This is the old one');
