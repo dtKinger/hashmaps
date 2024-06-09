@@ -19,40 +19,37 @@ class HashMap {
 
   get(key) {
     let value = null;
+    const hash = this.hash(key);
     if (this.theArray){
-      this.theArray.forEach((bucket) => {
-        const headNode = bucket.head;
-        // Traverse time
-        let temp = headNode;
-        while (temp){ // like my print function - want to check the last value in list as well.
-          // Check the key
-          if (temp.key == key){
-            value = temp.value
-            return value; // a lot like itHas() but dif return value.
-          }
-            temp = temp.nextNode
-          }
-        })
-      return value; // small dif here too
+      const headNode = this.theArray[hash].head;
+      // Traverse time
+      let temp = headNode;
+      while (temp){ // like my print function - want to check the last value in list as well.
+        // Check the key
+        if (temp.key == key){
+          value = temp.value
+          return value; // a lot like itHas() but dif return value.
+        }
+          temp = temp.nextNode
+        }
+      return value;
     }
   }
 
   itHas (key) {
     let keyFound = false;
     if (this.theArray){
-      this.theArray.forEach((bucket) => {
-        const headNode = bucket.head;
+        const hash = this.hash(key);
+        const headNode = this.theArray[hash].head;
         // Traverse time
         let temp = headNode;
         while (temp){ // like my print function - want to check the last value in list as well.
           // Check the key
           if (temp.key == key){
             keyFound = true;
-            return keyFound;
           }
             temp = temp.nextNode
           }
-        })
       return keyFound;
     }
   }
