@@ -10,10 +10,10 @@ class LinkedList {
     this.length += 1;
   }
 
-  append (value) {
+  append (key, value) {
     // if list is empty, simply assign a newNode to this.head
     if (this.head == null){
-      this.prepend(value)
+      this.prepend(key, value)
     } else {
       // use a temp copy of head as a non-destructive way to traverse by continually reassigning itself to the next one.
       let temp = this.head;
@@ -21,7 +21,7 @@ class LinkedList {
         temp = temp.nextNode; // Notice we don't reassign temp.value - but the whole object
         // This structure indicates that each node is actually nested inside its parent node
       }
-      temp.nextNode = new Node(value);
+      temp.nextNode = new Node(key, value, null);
       this.length += 1;
     }
   }

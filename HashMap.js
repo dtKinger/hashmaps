@@ -1,5 +1,4 @@
 const LinkedList = require('./LinkedList');
-const Node = require('./LinkedList');
 
 class HashMap {
   constructor (size) {
@@ -47,7 +46,6 @@ class HashMap {
         while (temp){ // like my print function - want to check the last value in list as well.
           // Check the key
           if (temp.key == key){
-            console.log('We Have a Match!')
             keyFound = true;
             return keyFound;
           }
@@ -69,7 +67,6 @@ class HashMap {
           // Check the key
           if (temp.key == key){
             temp.value = newValue;
-            console.log(`value updated to ${newValue}`)
           }
           temp = temp.nextNode
         }
@@ -80,24 +77,24 @@ class HashMap {
   set(key, value){
     assertStringType(key);
     const hash = this.hash(key)
-    console.log(hash)
     if (this.theArray[hash] === undefined ){
-    // Create a Linked List!
-    const list = new LinkedList();
-    list.prepend(key, value, null); // creates a new node
-    this.theArray[hash] = list; // store the linked list in the Array
-    } else if (this.theArray[hash] != undefined){
-      console.log('We have a Collision')
-      // Run the has(key) method to see if we want to overwrite an existing key's value
-      if (this.itHas(key)){
-        this.update(key, value);
-      console.log(this.theArray)
-      } else {
-        console.log('here')
+      // Create a Linked List!
+      const list = new LinkedList();
+      list.prepend(key, value, null); // creates a new node
+      this.theArray[hash] = list; // store the linked list in the Array
+      } else if (this.theArray[hash] != undefined){
+        // Run the has(key) method to see if we want to overwrite an existing key's value
+        if (this.itHas(key)){
+          this.update(key, value);
+        } else {
+          // append
+          this.theArray[hash].append(key, value)
+        }
       }
+      console.log(this.theArray)
+      // checkLoad();
     }
   }
-}
 
 // Project Constraint
 function checkIndex() {
