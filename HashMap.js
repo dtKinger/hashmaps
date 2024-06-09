@@ -1,8 +1,9 @@
 const LinkedList = require('./LinkedList');
 
 class HashMap {
-  constructor (size) {
-    this.theArray = new Array(size);
+  constructor (capacity) {
+    this.theArray = new Array(capacity);
+    this.loadFactor = 0.8;
   }
 
   hash(key) {
@@ -57,27 +58,26 @@ class HashMap {
   }
 
   update (key, newValue) {
-    
     if (this.theArray){
-      this.theArray.forEach((bucket) => {
-        const headNode = bucket.head;
-        // Traverse time
-        let temp = headNode;
-        while (temp){ // like my print function - want to check the last value in list as well.
-          // Check the key
-          if (temp.key == key){
-            temp.value = newValue;
-          }
-          temp = temp.nextNode
+      const hash = this.hash(key)
+      const headNode = this.theArray[hash].head;
+      // Traverse time
+      let temp = headNode;
+      while (temp){ // like my print function - want to check the last value in list as well.
+        // Check the key
+        if (temp.key == key){
+          temp.value = newValue;
         }
-      })
+        temp = temp.nextNode
+      }
     }
   }
 
   set(key, value){
     assertStringType(key);
     const hash = this.hash(key)
-    if (this.theArray[hash] === undefined ){
+    checkIndex(hash, this.theArray);
+    if (this.theArray[hash] == undefined ){
       // Create a Linked List!
       const list = new LinkedList();
       list.prepend(key, value, null); // creates a new node
@@ -91,14 +91,21 @@ class HashMap {
           this.theArray[hash].append(key, value)
         }
       }
-      console.log(this.theArray)
       // checkLoad();
     }
-  }
+
+    remove (key) {
+      if (!this.itHas(key)) return;
+
+      // traverse and find
+    }
+
+}
+
 
 // Project Constraint
-function checkIndex() {
-  if (index < 0 || index >= buckets.length) {
+function checkIndex(index, arr) {
+  if (index < 0 || index >= arr.length) {
     throw new Error("Trying to access index out of bound");
   }
 }
