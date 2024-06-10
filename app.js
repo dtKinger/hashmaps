@@ -1,38 +1,20 @@
 const HashMap = require('./HashMap')
+const data = require('./data')
 
 const map = new HashMap(16);
 
-map.set('Carlos', 'This is the old one')
-map.set('Carlos', 'This is the new one')
-map.set('Lucas', 'This is made up to hash collide');
-map.set('Daniel', 'Programmed this HashMap')
-map.set('Chris', 'Hashes to 7')
-map.set('Michael', 'Also hashes to 7')
-map.set('Pam', 'Hashes to 4')
-map.set('Jim', 'Hashes to 4')
-map.set('Erin', 'Hashes to 2')
-map.set('Jan', 'Hashes to 7')
-map.set('Kevin', 'Hashes to 1')
-map.set('Dwight', 'Hashes to 13')
-map.set('Andy', 'Hashes to 2')
-map.set('Karen', 'Hashes to 5')
-map.set('Kelly', 'Hashes to 15')
-map.set('Angela', 'Hashes to 0')
-map.set('Oscar', 'Hashes to 0')
-map.set('Creed', 'Hashes to 5')
-map.set('Toby', 'Hashes to 2')
-map.set('Ryan', 'Hashes to 4')
-map.set('Stanley', 'Hashes to 2')
-map.set('California', 'Hashes to 8')
-map.set('Phyllis', 'Hashes to 11')
-map.set('Meredith', 'Hashes to 4')
-map.set('David', 'Hashes to 4')
-map.set('Darryl', 'Hashes to 0')
-map.set('Pete', 'Hashes to 6')
-map.set('Packer', 'Hashes to 6')
-map.set('Mose', 'Hashes to 4')
+// Load names data
+data.forEach((person) => {
+  map.set(person.key, person.value)
+})
 
+// TESTING //
 // map.itHas('Carlos')
-map.remove('Daniel')
+// map.remove('Daniel')
+// map.set('Jim', 'Hash 14 - Load Balance Testing')
+map.remove('California'); // Handle deletion when only 1 item in linked list
 
-console.log(map.theArray)
+
+
+console.log(map.theArray[8])
+map.checkLoad();

@@ -55,6 +55,9 @@ class HashMap {
     }
   }
 
+  //
+  // Need to make this handle single node linked lists case
+  //
   update (key, newValue) {
     if (this.theArray){
       const hash = this.hash(key)
@@ -117,10 +120,24 @@ class HashMap {
       }
     }
 
+  checkLoad (arr) {
+    arr = this.theArray;
+    let load = 0;
+    arr.forEach((bucket) => {
+      if (bucket !== undefined){
+        load += 1
+      } else {
+        // do nothing
+      }
+    })
+    console.log(`PC Load level is ${load}`)
+    return load;
+  }
+
 }
 
 
-// Project Constraint
+// Project Constraints
 function checkIndex(index, arr) {
   if (index < 0 || index >= arr.length) {
     throw new Error("Trying to access index out of bound");
