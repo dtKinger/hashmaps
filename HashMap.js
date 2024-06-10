@@ -57,9 +57,6 @@ class HashMap {
     }
   }
 
-  //
-  // Need to make this handle single node linked lists case
-  //
   update (key, newValue) {
     if (this.theArray){
       const hash = this.hash(key)
@@ -83,7 +80,7 @@ class HashMap {
     if (this.theArray[hash] == undefined ){
       // Create a Linked List!
       const list = new LinkedList();
-      list.prepend(key, value, null); // creates a new node
+      list.prepend(key, value, null); // creates a new Node
       this.theArray[hash] = list; // store the linked list in the Array
       } else if (this.theArray[hash] != undefined){
         // Run the has(key) method to see if we want to overwrite an existing key's value
@@ -94,7 +91,7 @@ class HashMap {
           this.theArray[hash].append(key, value)
         }
       }
-      // checkLoad();
+      this.checkLoad();
     }
 
     remove (key) {
@@ -128,34 +125,43 @@ class HashMap {
       }
     }
 
-  checkLoad (arr) {
-    arr = this.theArray;
-    let load = 0;
+  clear () {
+    this.theArray.length = 0;
+  }
+
+  checkLoad () {
+    let arr = this.theArray;
+    let loadInt = 0;
+    let loadLevel = 0;
     arr.forEach((bucket) => {
       if (bucket !== undefined){
-        load += 1
+        loadInt += 1
       } else {
         // do nothing
       }
     })
-    if (load / this.capacity > this.loadFactor){
+    loadLevel = (loadInt / this.capacity).toFixed(2)
+    if (loadLevel > this.loadFactor){
       this.balanceLoad();
     } else {
       // do nothing
-      console.log(`PC Load level is ${load}`)
+      console.log(`PC Load level is ${loadInt}`)
     }
-    
-    return load;
+    return loadInt, loadLevel;
   }
 
   balanceLoad () {
     console.log('Reblancing...')
+    this.capacity = this.capacity * 2
+    this.theArray = new Array(this.capacity)
+    this.repopulateHashMap();
   }
 
   repopulateHashMap () {
     data.forEach((person) => {
-      map.set(person.key, person.value)
+      this.set(person.key, person.value)
     })
+    console.log(this.theArray.length) // shows 32 meaning the array rebalanced on load.
   }
 
   cleanBucket (hash) {
@@ -177,5 +183,11 @@ function assertStringType (key) {
     throw new Error('Please try again with a String-type key')
   }
 }
+
+// let map = new HashMap(16);
+// // Load names data
+// data.forEach((person) => {
+//   map.set(person.key, person.value)
+// })
 
 module.exports = HashMap
