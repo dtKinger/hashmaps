@@ -1,0 +1,22 @@
+:root {
+  --header-section-height: 10vh;
+  --footer-section-height: 10vh;
+}
+
+body {
+  color: white;
+  background-color: black;
+  font-family: roboto;
+}
+
+header{
+  min-height: var(--header-section-height);
+}
+
+main {
+  min-height: calc(100vh - var(--header-section-height) - var(--footer-section-height))
+}
+
+footer{
+  min-height: var(--footer-section-height);
+}

@@ -4,10 +4,11 @@ const data = require('./data')
 // Initialize map here
 let map = new HashMap(16);
 
-// Load names data
+// Load placeholder names once
 data.forEach((person) => {
   map.set(person.key, person.value)
 })
+// Do not maintain the database - let Hashmap be the memory.
 
 // TESTING //
 // map.set('California', 'Robert')

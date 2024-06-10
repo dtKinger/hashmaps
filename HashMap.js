@@ -161,7 +161,7 @@ class HashMap {
     data.forEach((person) => {
       this.set(person.key, person.value)
     })
-    console.log(this.theArray.length) // shows 32 meaning the array rebalanced on load.
+    console.log(this.theArray.length) // shows 32 meaning the array rebalanced.
   }
 
   cleanBucket (hash) {
