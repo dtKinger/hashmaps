@@ -1,7 +1,7 @@
-const LinkedList = require('./LinkedList');
-const data = require('./data')
+import { LinkedList } from "./LinkedList.js"
+import { data } from "./data.js"
 
-class HashMap {
+export class HashMap {
   constructor (capacity) {
     this.capacity = capacity
     this.theArray = new Array(capacity);
@@ -183,11 +183,3 @@ function assertStringType (key) {
     throw new Error('Please try again with a String-type key')
   }
 }
-
-// let map = new HashMap(16);
-// // Load names data
-// data.forEach((person) => {
-//   map.set(person.key, person.value)
-// })
-
-module.exports = HashMap

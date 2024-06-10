@@ -1,5 +1,5 @@
-const HashMap = require('./HashMap')
-const data = require('./data')
+import { HashMap } from "./HashMap.js"
+import { data } from "./data.js"
 
 // Initialize map here
 let map = new HashMap(16);

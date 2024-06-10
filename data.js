@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   { key: 'Carlos', value: 'This is the new one' },  // Updated value for Carlos
   { key: 'Lucas', value: 'Hash 12 - COLLIDES with Carlos' },
   { key: 'Daniel', value: 'Hashes to 15' },
@@ -27,5 +27,3 @@ const data = [
   { key: 'Packer', value: 'Hashes to 6' },
   { key: 'Mose', value: 'Hashes to 4' }
 ];
-
-module.exports = data;
