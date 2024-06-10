@@ -112,9 +112,9 @@ class HashMap {
             // handle single-entry linked list
             // The single delete case:
             // this.theArray[hash].head = null;
-            // However, it would be better to clean our the bucket, so the load is not affected,
+            // However, it would be better to clean out the bucket, so the load is not affected,
             // and so creating a new LinkedList next time is clean
-            this.theArray[hash] = undefined;
+            this.cleanBucket(hash);
           } else if (!prev) {
             // you're looking at first node in the list
             temp = temp.nextNode;
@@ -138,6 +138,10 @@ class HashMap {
     })
     console.log(`PC Load level is ${load}`)
     return load;
+  }
+
+  cleanBucket (hash) {
+    this.theArray[hash] = undefined;
   }
 
 }
