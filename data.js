@@ -5,7 +5,6 @@ const data = [
   { key: 'Chris', value: 'Hashes to 7' },
   { key: 'Michael', value: 'Also hashes to 7' },
   { key: 'Pam', value: 'Hashes to 12' },
-  // { key: 'Jim', value: 'Hashes to 14' }, // reserve for load testing
   { key: 'Erin', value: 'Hashes to 2' },
   { key: 'Jan', value: 'Hashes to 7' },
   { key: 'Kevin', value: 'Hashes to 1' },

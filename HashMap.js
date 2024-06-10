@@ -1,7 +1,9 @@
 const LinkedList = require('./LinkedList');
+const data = require('./data')
 
 class HashMap {
   constructor (capacity) {
+    this.capacity = capacity
     this.theArray = new Array(capacity);
     this.loadFactor = 0.8;
   }
@@ -12,7 +14,7 @@ class HashMap {
     const primeNumber = 31;
     for (let i = 0; i < key.length; i++) {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
-      hashCode = hashCode % 16;
+      hashCode = hashCode % this.capacity; // don't fix at 16
     }
     // console.log(`${key} hashed to ${hashCode}`)
     return hashCode;
@@ -109,12 +111,12 @@ class HashMap {
             prev.nextNode = temp.nextNode; // point the old prev to new temp, dropping the target from chain.
             return true;
           } else if (!prev && !temp.nextNode){
-            // handle single-entry linked list
-            // The single delete case:
+            // The single-entry delete case:
             // this.theArray[hash].head = null;
             // However, it would be better to clean out the bucket, so the load is not affected,
-            // and so creating a new LinkedList next time is clean
+            // and also so that creating a new LinkedList next time is clean
             this.cleanBucket(hash);
+            return true;
           } else if (!prev) {
             // you're looking at first node in the list
             temp = temp.nextNode;
@@ -136,8 +138,24 @@ class HashMap {
         // do nothing
       }
     })
-    console.log(`PC Load level is ${load}`)
+    if (load / this.capacity > this.loadFactor){
+      this.balanceLoad();
+    } else {
+      // do nothing
+      console.log(`PC Load level is ${load}`)
+    }
+    
     return load;
+  }
+
+  balanceLoad () {
+    console.log('Reblancing...')
+  }
+
+  repopulateHashMap () {
+    data.forEach((person) => {
+      map.set(person.key, person.value)
+    })
   }
 
   cleanBucket (hash) {

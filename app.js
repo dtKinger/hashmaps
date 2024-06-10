@@ -11,11 +11,9 @@ data.forEach((person) => {
 // TESTING //
 // map.itHas('Carlos')
 // map.remove('Daniel')
-// map.set('Jim', 'Hash 14 - Load Balance Testing')
-map.remove('California'); // Handle deletion when only 1 item in linked list
+// map.remove('California'); // Handle deletion when only 1 item in linked list
 // map.set('California', 'Robert')
-
-
+// map.set('Jim', 'Hash 14 - Load Balance Testing')
 
 console.log(map.theArray)
 map.checkLoad();
