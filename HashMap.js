@@ -92,9 +92,28 @@ class HashMap {
     }
 
     remove (key) {
-      if (!this.itHas(key)) return;
-
+      if (!this.itHas(key)) return false;
+      const hash = this.hash(key);
+      const headNode = this.theArray[hash].head
       // traverse and find
+      let temp = headNode;
+      let prev = null;
+      while (temp){
+        if (temp.key == key){
+          if (prev){
+            prev.nextNode = temp.nextNode; // point the old prev to new temp, dropping the target from chain.
+            return true;
+          } else if (!prev && temp.nextNode == null){
+            temp.head = null;
+          } else if (!prev || prev == null) {
+            // you're looking at first node in the list
+            temp = temp.nextNode;
+            return true;
+          }
+        }
+        prev = temp;
+        temp = temp.nextNode;
+      }
     }
 
 }
