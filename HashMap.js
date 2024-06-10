@@ -14,6 +14,7 @@ class HashMap {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
       hashCode = hashCode % 16;
     }
+    // console.log(`${key} hashed to ${hashCode}`)
     return hashCode;
   } 
 
