@@ -105,11 +105,17 @@ class HashMap {
       while (temp){
         if (temp.key == key){
           if (prev){
+          // if you're not at the start of the list, simple re-point
             prev.nextNode = temp.nextNode; // point the old prev to new temp, dropping the target from chain.
             return true;
-          } else if (!prev && temp.nextNode == null){
-            temp.head = null;
-          } else if (!prev || prev == null) {
+          } else if (!prev && !temp.nextNode){
+            // handle single-entry linked list
+            // The single delete case:
+            // this.theArray[hash].head = null;
+            // However, it would be better to clean our the bucket, so the load is not affected,
+            // and so creating a new LinkedList next time is clean
+            this.theArray[hash] = undefined;
+          } else if (!prev) {
             // you're looking at first node in the list
             temp = temp.nextNode;
             return true;
