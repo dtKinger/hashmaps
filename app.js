@@ -32,7 +32,7 @@ function morphJimBtn () {
   addJimBtn.removeEventListener('click', addJim);
   addJimBtn.textContent = 'Reload default'
   addJimBtn.addEventListener('click', () => {
-    window.location = '/';
+    window.location = '/hashmaps/';
   })
   
 }
