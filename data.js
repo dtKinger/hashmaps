@@ -2,7 +2,6 @@ export const data = [
   { key: 'Carlos', value: 'This is the new one' },  // Updated value for Carlos
   { key: 'Lucas', value: 'Collides w Carlos' },
   { key: 'Daniel', value: 'King' },
-  { key: 'Chris', value: 'King' },
   { key: 'Michael', value: 'Scott' },
   { key: 'Pam', value: 'Beasley' },
   { key: 'Erin', value: 'Hannon' },

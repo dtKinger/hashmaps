@@ -212,14 +212,15 @@ export class HashMap {
     const domNodesCol = document.querySelector('.nodes-col')
     
     // Make bucket numbers
-    this.theArray.forEach((bucket, index) => {
+    
+    for (let i = 0; i < this.theArray.length; i +=1){
+      const bucket = this.theArray[i];
       const newDiv = document.createElement('div');
       const newRow = document.createElement('div');  
       if (bucket){ // If there's a Linked List inside
-        console.log('here1')
         // Draw bucket numbers
         const bucketNumber = newDiv;
-        bucketNumber.textContent = index;
+        bucketNumber.textContent = i;
         domBucketsCol.appendChild(bucketNumber);
 
         // make node row
@@ -241,22 +242,20 @@ export class HashMap {
           temp = temp.nextNode;
         }
       } else if (!bucket) {
-        console.log('here2')
         // Draw the bucket still
         const bucketNumber = newDiv;
-        bucketNumber.textContent = index;
+        bucketNumber.textContent = i;
         domBucketsCol.appendChild(bucketNumber);
-
-        // // Draw empty node
-        // const emptyNode = newDiv;
-        // emptyNode.innerHTML = `
-        //   <div class="nodes-row">
-        //     <div class="node"><div>empty</div></div>
-        //   </div>
-        // `
-        // domNodesCol.appendChild(emptyNode);
+        // Draw empty node
+        const emptyNode = newRow;
+        emptyNode.innerHTML = `
+          <div class="nodes-row">
+            <div class="node"><div>empty</div></div>
+          </div>
+        `
+        domNodesCol.appendChild(emptyNode);
       }
-    })
+    }
   }
 
 

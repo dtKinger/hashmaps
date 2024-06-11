@@ -28,6 +28,7 @@ main {
 
 footer{
   min-height: var(--footer-section-height);
+  padding: 20px 0px;
 }
 
 .header-title{
@@ -58,6 +59,8 @@ a:visited{
   margin-bottom: 40px;
   position: sticky;
   top: 20px;
+  background-color: rgb(30, 30, 34);
+  z-index: 2;
 }
 
 .buckets-col{
@@ -107,8 +110,39 @@ a:visited{
   gap: 20px;
 }
 
-/* .nodes-row div::after {
-  content: '=>';
-  position: absolute;
-  transform: translateX(15px);
-} */
+.btn-wrapper{
+  display: flex;
+  justify-content: center;
+
+  position: sticky;
+  top: 120px;
+}
+
+@media screen and (max-width: 418px){
+  .btn-wrapper{
+    top:140px;
+  }
+}
+
+.add-jim-btn{
+  background-color: rgb(47, 173, 247);
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border:none;
+  border-radius: 5px;
+  /* box-shadow: 2px 2px 2px white; */
+  cursor: pointer;
+  z-index: 2;
+  color: white;
+  transition: ease 0.3s;
+}
+
+.btn-backdrop{
+  box-shadow: 2px 2px 2px white;
+  border:none;
+  border-radius: 5px;
+}
+
+.add-jim-btn:active{
+  transform: translateX(2px) translateY(2px);
+}
