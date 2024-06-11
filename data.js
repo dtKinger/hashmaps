@@ -1,6 +1,7 @@
 export const data = [
-  { key: 'Carlos', value: 'This is the new one' },  // Updated value for Carlos
-  { key: 'Lucas', value: 'Collides w Carlos' },
+  { key: 'Carlos', value: 'This is the old one' }, // Ensure this gets overwritten
+  { key: 'Carlos', value: 'This is the new one' }, // Updated value for Carlos
+  { key: 'Lucas', value: 'Collides w Carlos?' },
   { key: 'Daniel', value: 'King' },
   { key: 'Michael', value: 'Scott' },
   { key: 'Pam', value: 'Beasley' },

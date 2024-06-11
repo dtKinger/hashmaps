@@ -1,5 +1,4 @@
 import { LinkedList } from "./LinkedList.js"
-import { data } from "./data.js"
 
 export class HashMap {
   constructor (capacity) {
@@ -60,9 +59,9 @@ export class HashMap {
     if (this.theArray){
       const hash = this.hash(key)
       const headNode = this.theArray[hash].head;
-      // Traverse time
+      // Time to traverse the linked list
       let temp = headNode;
-      while (temp){ // like my print function - want to check the last value in list as well.
+      while (temp){
         // Check the key
         if (temp.key == key){
           temp.value = newValue;
@@ -73,16 +72,16 @@ export class HashMap {
   }
 
   set(key, value){
-    assertStringType(key);
+    assertStringType(key); // Project constraint
     const hash = this.hash(key)
-    checkIndex(hash, this.theArray);
+    checkIndex(hash, this.theArray); // Project constraint - JS too forgiving.
     if (this.theArray[hash] == undefined ){
       // Create a Linked List!
       const list = new LinkedList();
       list.prepend(key, value, null); // creates a new Node
-      this.theArray[hash] = list; // store the linked list in the Array
+      this.theArray[hash] = list;
       } else if (this.theArray[hash] != undefined){
-        // Run the has(key) method to see if we want to overwrite an existing key's value
+        // Run the itHas(key) method to see if we want to overwrite an existing key's value
         if (this.itHas(key)){
           this.update(key, value);
         } else {
@@ -142,7 +141,7 @@ export class HashMap {
     })
     loadLevel = (loadInt / this.capacity).toFixed(2)
     if (loadLevel > this.loadFactor){
-      alert(`Load level of ${loadLevel} exceeds our Load Factor of ${this.loadFactor}. \n\nRebalancing...`)
+      // alert(`Load level of ${loadLevel} exceeds our Load Factor of ${this.loadFactor}. \n\nRebalancing...`)
       this.balanceLoad(key, value);
     } else {
       // do nothing

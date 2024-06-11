@@ -28,7 +28,10 @@ main {
 
 footer{
   min-height: var(--footer-section-height);
+  display: flex;
+  justify-content: space-between;
   padding: 20px 0px;
+  
 }
 
 .header-title{
@@ -38,6 +41,7 @@ footer{
 .dashboard-num{
   font-size: 2rem;
   color: rgb(47, 173, 247);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 a:visited{
@@ -130,7 +134,6 @@ a:visited{
   font-size: 1.2em;
   border:none;
   border-radius: 5px;
-  /* box-shadow: 2px 2px 2px white; */
   cursor: pointer;
   z-index: 2;
   color: white;
@@ -144,6 +147,18 @@ a:visited{
   box-shadow: 2px 2px 2px white;
   border:none;
   border-radius: 5px;
+}
+
+.tip-scales{
+  font-weight: 500;
+  transition: ease 2s;
+  opacity: 0;
+  background-color: rgb(30, 30, 34);
+  color: white;
+  font-size: 1.2em;
+  padding: 10px;
+  border: 1px solid white;  
+  border-radius: 10px;
 }
 
 .add-jim-btn:active{

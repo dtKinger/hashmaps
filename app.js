@@ -17,6 +17,7 @@ console.log(hashmap)
 // hashmap.set('California', 'Robert')
 // hashmap.remove('California'); // Handle deletion when only 1 item in linked list
 
+const theScales = document.querySelector('.tip-scales')
 const addJimBtn = document.querySelector('.add-jim-btn')
 const btnBackdrop = document.querySelector('.btn-backdrop')
 
@@ -39,4 +40,5 @@ function morphJimBtn () {
 setTimeout(() => {
   addJimBtn.style.opacity = 2;
   btnBackdrop.style.opacity = 2;
+  theScales.style.opacity = 2;
 }, 3000)
