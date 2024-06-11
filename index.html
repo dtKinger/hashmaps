@@ -10,14 +10,35 @@
 </head>
 <body>
   <header>
+    <h1 class="header-title">Hash Maps</h2>
   </header>
   <main>
-    <h1>Hash Maps</h2>
+      <div class="container">
+        <div class="unit">
+          <p>CURRENT LOAD: </p>
+          <span class="current-load dashboard-num"></span>
+        </div>
+        
+        <div class="unit">
+          <p>LOAD FACTOR: </p>
+          <span class="dashboard-num">0.8</span>  
+        </div>
+        
+        <div class="unit">
+          <p>BUCKETS: </p>
+          <span class="buckets-amount dashboard-num"></span>
+        </div>
+        
+      </div>
+      
+      <button class="add-jim-btn">Add Jim Halpert</button>
+      <div class="hash-map">
+        
+      </div>
   </main>
   <footer>
-    <p>&copy;</p>
+    <p>&copy; <a href="https://danielking.ca">danielking.ca</a></p>
   </footer>
-  <script src="data.js" type="module"></script>
   <script src="HashMap.js" type="module"></script>
   <script src="app.js" type="module"></script>
 </body>

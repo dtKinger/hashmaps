@@ -16,7 +16,6 @@ export class HashMap {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
       hashCode = hashCode % this.capacity; // don't fix at 16
     }
-    // console.log(`${key} hashed to ${hashCode}`)
     return hashCode;
   } 
 
@@ -91,7 +90,7 @@ export class HashMap {
           this.theArray[hash].append(key, value)
         }
       }
-      this.checkLoad();
+      this.onChange(key, value)
     }
 
     remove (key) {
@@ -123,13 +122,14 @@ export class HashMap {
         prev = temp;
         temp = temp.nextNode;
       }
+      this.onChange(key);
     }
 
-  clear () {
-    this.theArray.length = 0;
+  clear (arr) {
+    arr.length = 0;
   }
 
-  checkLoad () {
+  checkLoad (key, value) {
     let arr = this.theArray;
     let loadInt = 0;
     let loadLevel = 0;
@@ -142,26 +142,72 @@ export class HashMap {
     })
     loadLevel = (loadInt / this.capacity).toFixed(2)
     if (loadLevel > this.loadFactor){
-      this.balanceLoad();
+      alert(`Load level of ${loadLevel} exceeds our Load Factor of ${this.loadFactor}. \n\nRebalancing...`)
+      this.balanceLoad(key, value);
     } else {
       // do nothing
-      console.log(`PC Load level is ${loadInt}`)
     }
+    
     return loadInt, loadLevel;
   }
 
-  balanceLoad () {
-    console.log('Reblancing...')
+  balanceLoad (key, value) { 
     this.capacity = this.capacity * 2
+    const tempArray = this.entries(this.theArray) // and store them as key-value STRING pairs in tempArray
+    tempArray.push([key, value]) // Save the incoming key-value to tempArray
+    this.clear(this.theArray)
     this.theArray = new Array(this.capacity)
-    this.repopulateHashMap();
+    this.repopulateHashMap(tempArray); // Rehash and rebuild
+    this.onChange();
   }
 
-  repopulateHashMap () {
-    data.forEach((person) => {
-      this.set(person.key, person.value)
+  entries (arr) {
+    const entriesArray = new Array(); // unsure the size needed.
+    arr.forEach((bucket => {
+      if (bucket){
+        const headNode = bucket.head;  
+        // Traverse time
+        let temp = headNode;
+        while (temp){ 
+          // Read the key/values and send to tempArray
+          entriesArray.push([temp.key, temp.value])
+          temp = temp.nextNode
+        }
+      }
+    }))
+    return entriesArray;
+  }
+
+  repopulateHashMap (tempArray) {
+    tempArray.forEach((entry) => {
+      // Pull out and control the type fed into this.set() as strings
+      const [key, value] = entry // destructure the entry item (of array type)
+      // Rehash
+      this.set(key, value) // send them back into the new this.theArray
     })
-    console.log(this.theArray.length) // shows 32 meaning the array rebalanced.
+    console.log(this)
+  }
+
+  drawCurrentLoad () {
+    const currentLoadNum = document.querySelector('.current-load')
+    currentLoadNum.textContent = this.checkLoad();
+  }
+
+  drawBucketsAmount () {
+    const bucketAmount = document.querySelector('.buckets-amount');
+    bucketAmount.textContent = this.capacity;
+  }
+  
+  drawHashMap () {
+    const domMap = document.querySelector('.hash-map')
+  }
+
+
+  onChange (key, value) {
+    this.checkLoad(key, value); // need to pass the incoming value from onChange() => checkLoad() => balanceLoad()
+    this.drawBucketsAmount();
+    this.drawCurrentLoad();
+    this.drawHashMap();
   }
 
   cleanBucket (hash) {

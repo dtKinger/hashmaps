@@ -14,6 +14,15 @@ data.forEach((person) => {
 // map.set('California', 'Robert')
 // map.remove('California'); // Handle deletion when only 1 item in linked list
 
-// tips over the load Factor forcing a rebalance.
-map.set('Jim', 'Hash 14 - Load Balance Testing')
 
+
+const addJimBtn = document.querySelector('.add-jim-btn')
+
+addJimBtn.addEventListener('click', () => {
+  addJim();
+})
+
+function addJim () {
+  map.set('Jim', 'Hash 14 - Causing a load rebalance')
+
+}
