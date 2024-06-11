@@ -39,15 +39,6 @@ footer{
   color: rgb(47, 173, 247);
 }
 
-.metrics-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 40px;
-}
-
 a:visited{
   color: white;
 }
@@ -55,6 +46,16 @@ a:visited{
 .hash-map{
   display: flex;
   gap: 30px;
+  font-size: 0.85em;
+}
+
+.metrics-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 40px;
 }
 
 .buckets-col{
