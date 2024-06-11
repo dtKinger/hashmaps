@@ -56,6 +56,8 @@ a:visited{
   text-align: center;
   padding: 20px;
   margin-bottom: 40px;
+  position: sticky;
+  top: 20px;
 }
 
 .buckets-col{
@@ -83,6 +85,7 @@ a:visited{
   display: flex;
   flex-direction: column;
   gap: 2px;
+  overflow: scroll;
 }
 
 .nodes-row{
@@ -95,6 +98,8 @@ a:visited{
   padding: 6px;
   height: 30px;
   border: 1px solid violet;
+
+  text-wrap: nowrap;
 }
 
 .node {

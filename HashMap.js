@@ -201,6 +201,62 @@ export class HashMap {
   
   drawHashMap () {
     const domMap = document.querySelector('.hash-map')
+    // reset
+    domMap.innerHTML = `
+      <div class="buckets-col">
+      </div>
+      <div class="nodes-col">
+      </div>
+      `
+    const domBucketsCol = document.querySelector('.buckets-col')
+    const domNodesCol = document.querySelector('.nodes-col')
+    
+    // Make bucket numbers
+    this.theArray.forEach((bucket, index) => {
+      const newDiv = document.createElement('div');
+      const newRow = document.createElement('div');  
+      if (bucket){ // If there's a Linked List inside
+        console.log('here1')
+        // Draw bucket numbers
+        const bucketNumber = newDiv;
+        bucketNumber.textContent = index;
+        domBucketsCol.appendChild(bucketNumber);
+
+        // make node row
+        const nodeRow = newRow;
+        nodeRow.className = 'nodes-row';
+        domNodesCol.appendChild(nodeRow);
+        // traverse the linked list
+        const headNode = bucket.head;
+        let temp = headNode;
+        while(temp){
+          const newNode = document.createElement('div');
+          const node = newNode
+          node.className = 'node';
+          node.innerHTML = `
+          <div>${temp.key} ${temp.value}</div><div>=></div>
+          `;
+          nodeRow.appendChild(node);
+          
+          temp = temp.nextNode;
+        }
+      } else if (!bucket) {
+        console.log('here2')
+        // Draw the bucket still
+        const bucketNumber = newDiv;
+        bucketNumber.textContent = index;
+        domBucketsCol.appendChild(bucketNumber);
+
+        // // Draw empty node
+        // const emptyNode = newDiv;
+        // emptyNode.innerHTML = `
+        //   <div class="nodes-row">
+        //     <div class="node"><div>empty</div></div>
+        //   </div>
+        // `
+        // domNodesCol.appendChild(emptyNode);
+      }
+    })
   }
 
 
