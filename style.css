@@ -134,10 +134,13 @@ a:visited{
   cursor: pointer;
   z-index: 2;
   color: white;
-  transition: ease 0.3s;
+  transition: ease 2s;
+  opacity: 0;
 }
 
 .btn-backdrop{
+  transition: ease 2s;
+  opacity: 0;
   box-shadow: 2px 2px 2px white;
   border:none;
   border-radius: 5px;

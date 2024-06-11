@@ -18,11 +18,25 @@ console.log(hashmap)
 // hashmap.remove('California'); // Handle deletion when only 1 item in linked list
 
 const addJimBtn = document.querySelector('.add-jim-btn')
+const btnBackdrop = document.querySelector('.btn-backdrop')
 
-addJimBtn.addEventListener('click', () => {
-  addJim();
-})
+addJimBtn.addEventListener('click', addJim)
 
 function addJim () {
   hashmap.set('Jim', 'Halpert')
+  morphJimBtn();
 }
+
+function morphJimBtn () {
+  addJimBtn.removeEventListener('click', addJim);
+  addJimBtn.textContent = 'Reload default'
+  addJimBtn.addEventListener('click', () => {
+    window.location = '/';
+  })
+  
+}
+
+setTimeout(() => {
+  addJimBtn.style.opacity = 2;
+  btnBackdrop.style.opacity = 2;
+}, 3000)
