@@ -1,5 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  --header-section-height: 10vh;
+  --header-section-height: 6vh;
   --footer-section-height: 10vh;
 }
 
@@ -13,6 +19,7 @@ body {
 
 header{
   min-height: var(--header-section-height);
+  margin: 20px 0px;
 }
 
 main {
@@ -32,7 +39,7 @@ footer{
   color: rgb(47, 173, 247);
 }
 
-.container {
+.metrics-container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -44,3 +51,58 @@ footer{
 a:visited{
   color: white;
 }
+
+.hash-map{
+  display: flex;
+  gap: 30px;
+}
+
+.buckets-col{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.buckets-col div {
+  width: 28px;
+  height: 30px;
+  border: 1px solid rgb(47, 173, 247);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buckets-col div::after {
+  content: '{{';
+  position: absolute;
+  transform: translateX(30px);
+}
+
+.nodes-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nodes-row{
+  display: flex;
+  gap:20px;
+}
+
+.node div {
+  min-width: min-content;
+  padding: 6px;
+  height: 30px;
+  border: 1px solid violet;
+}
+
+.node {
+  display: flex;
+  gap: 20px;
+}
+
+/* .nodes-row div::after {
+  content: '=>';
+  position: absolute;
+  transform: translateX(15px);
+} */

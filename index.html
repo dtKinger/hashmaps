@@ -13,27 +13,66 @@
     <h1 class="header-title">Hash Maps</h2>
   </header>
   <main>
-      <div class="container">
+      <div class="metrics-container">
+        <div class="unit">
+          <p>BUCKETS: </p>
+          <span class="buckets-amount dashboard-num"></span>
+        </div>
+
         <div class="unit">
           <p>CURRENT LOAD: </p>
           <span class="current-load dashboard-num"></span>
         </div>
-        
+
         <div class="unit">
           <p>LOAD FACTOR: </p>
           <span class="dashboard-num">0.8</span>  
-        </div>
-        
-        <div class="unit">
-          <p>BUCKETS: </p>
-          <span class="buckets-amount dashboard-num"></span>
         </div>
         
       </div>
       
       <button class="add-jim-btn">Add Jim Halpert</button>
       <div class="hash-map">
-        
+        <div class="buckets-col">
+          <div>0</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </div>
+        <div class="nodes-col">
+          
+          <div class="nodes-row">
+            <div class="node">
+              <div>Michael Scott</div><div class="arrow">=></div>
+            </div>
+            <div class="node">
+              <div>Pam Beasley</div><div class="arrow">=></div>
+            </div>
+          </div>
+          
+          <div class="nodes-row">
+            <div class="node">
+              <div>Ryan Howard</div><div class="arrow">=></div>
+            </div>
+            <div class="node">
+              <div>Darryl Philbin</div><div class="arrow">=></div>
+            </div>
+          </div>
+
+          <div class="nodes-row">
+            <div class="node"><div>empty</div></div>
+          </div>
+
+          <div class="nodes-row">
+            <div class="node">
+              <div>Creed Bratton</div><div class="arrow">=></div>
+            </div>
+            <div class="node">
+              <div>Meredith Palmer</div><div class="arrow">=></div>
+            </div>
+          </div>
+
+        </div>
       </div>
   </main>
   <footer>

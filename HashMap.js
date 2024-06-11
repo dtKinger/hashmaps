@@ -185,6 +185,7 @@ export class HashMap {
       // Rehash
       this.set(key, value) // send them back into the new this.theArray
     })
+    console.log(`Hash Map has been rebalanced`)
     console.log(this)
   }
 

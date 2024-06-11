@@ -2,19 +2,20 @@ import { HashMap } from "./HashMap.js"
 import { data } from "./data.js"
 
 // Initialize map here
-let map = new HashMap(16);
+let hashmap = new HashMap(16);
 
 // Load placeholder names once
+// Do not maintain the database - store data in Hash Map or tempArray
 data.forEach((person) => {
-  map.set(person.key, person.value)
+  hashmap.set(person.key, person.value)
 })
-// Do not maintain the database - let Hashmap be the memory.
+console.log(`Default hash map loaded!`)
+console.log(hashmap)
+
 
 // TESTING //
-// map.set('California', 'Robert')
-// map.remove('California'); // Handle deletion when only 1 item in linked list
-
-
+// hashmap.set('California', 'Robert')
+// hashmap.remove('California'); // Handle deletion when only 1 item in linked list
 
 const addJimBtn = document.querySelector('.add-jim-btn')
 
@@ -23,6 +24,5 @@ addJimBtn.addEventListener('click', () => {
 })
 
 function addJim () {
-  map.set('Jim', 'Hash 14 - Causing a load rebalance')
-
+  hashmap.set('Jim', 'Halpert')
 }
