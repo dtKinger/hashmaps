@@ -92,7 +92,7 @@ a:visited{
   display: flex;
   flex-direction: column;
   gap: 2px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .nodes-row{
